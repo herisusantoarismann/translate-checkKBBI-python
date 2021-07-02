@@ -1,15 +1,16 @@
 # import Library
 from flask import Flask, render_template, request, redirect
 from googletrans import Translator
-from kbbi import KBBI, TidakDitemukan, AutentikasiKBBI
+from kbbi import KBBI, TidakDitemukan
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+import auth
 
 # inisialisasi Flask
 app = Flask(__name__)
 translator = Translator()
-auth = AutentikasiKBBI('eriparigi18@gmail.com', 'heris783')
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
+auth = auth.auth
 
 def terjemah(kalimat):
     terjemahan = []
